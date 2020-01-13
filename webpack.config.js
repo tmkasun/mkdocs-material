@@ -255,20 +255,10 @@ module.exports = (_env, args) => { // eslint-disable-line complexity
     },
 
     /* Sourcemaps */
-    devtool: args.mode !== "production" ? "inline-source-map" : "",
+    devtool: "source-map",
 
     /* Optimizations */
     optimization: {
-      minimizer: [
-        new UglifyJsPlugin({
-          uglifyOptions: {
-            output: {
-              comments: /^!/
-            }
-          }
-        }),
-        new OptimizeCSSAssetsPlugin()
-      ],
       splitChunks: {
         cacheGroups: {
           commons: {

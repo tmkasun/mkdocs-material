@@ -161,9 +161,20 @@ export default class Result {
 
     /* Initialize index, if this has not be done yet */
     if (ev.type === "focus" && !this.index_) {
+      document.querySelector(".md-search__icon").classList
+        .add("md-search-loader")
+      if (this.isInitializing) {
+        return
+      } else {
+        this.isInitializing = true
+      }
+      this.meta_.textContent = "Please wait while loading the indexes . . ."
 
       /* Initialize index */
       const init = data => {
+        document.querySelector(".md-search__icon").classList
+          .remove("md-search-loader")
+        this.meta_.textContent = this.message_.placeholder
 
         /* Preprocess and index sections and documents */
         this.docs_ = data.reduce((docs, doc) => {
