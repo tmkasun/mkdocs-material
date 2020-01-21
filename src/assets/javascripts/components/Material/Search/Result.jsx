@@ -240,7 +240,7 @@ export default class Result {
           }
 
           /* Index fields */
-          this.field("title", { boost: 10 })
+          this.field("title", { boost: 100 })
           this.field("text")
           this.ref("location")
 
@@ -297,6 +297,11 @@ export default class Result {
             .filter(Boolean)
             .forEach(term => {
               query.term(term, { wildcard: lunr.Query.wildcard.TRAILING })
+              query.term(term, {
+                fields: ["title"],
+                boost: 200,
+                usePipeline: false
+              })
             })
         })
 
