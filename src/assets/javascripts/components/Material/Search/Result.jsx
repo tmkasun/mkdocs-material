@@ -293,15 +293,14 @@ export default class Result {
 
         /* Append trailing wildcard to all terms for prefix querying */
         .query(query => {
+          query.term(this.value_, { usePipeline: false,
+            fields: ["title"], boost: 200,
+            wildcard: lunr.Query.wildcard.TRAILING })
           this.value_.toLowerCase().split(" ")
             .filter(Boolean)
             .forEach(term => {
-              query.term(term, { wildcard: lunr.Query.wildcard.TRAILING })
-              query.term(term, {
-                fields: ["title"],
-                boost: 200,
-                usePipeline: false
-              })
+              query.term(term, { fields: ["text"],
+                boost: 1 })
             })
         })
 

@@ -281,11 +281,12 @@ function initialize(config) { // eslint-disable-line func-style
         new Material.Search.Lock("[data-md-toggle=search]")))
 
     /* Component: search results */
-    fetch(`${config.url.base}/search/search_index.json`)
+    const url = `${config.url.base}/search/search_index.json`
+    fetch(url)
     new Material.Event.Listener("[data-md-component=query]", [
       "focus", "keyup", "change"
     ], new Material.Search.Result("[data-md-component=result]", () => {
-      return fetch(`${config.url.base}/search/search_index.json`, {
+      return fetch(url, {
         cache: "force-cache",
         credentials: "same-origin"
       }).then(response => response.json())
