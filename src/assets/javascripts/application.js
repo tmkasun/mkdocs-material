@@ -272,8 +272,10 @@ function initialize(config) { // eslint-disable-line func-style
       "[data-md-component=navigation] [data-md-toggle]", "change",
       new Material.Nav.Scrolling("[data-md-component=navigation] nav")))
 
-  /* Initialize search, if available */
-  if (document.querySelector("[data-md-component=search]")) {
+  /* Initialize search, if available
+  ~wso2 modification: forcefully prevent initializing material search
+  */
+  if (false && document.querySelector("[data-md-component=search]")) {
 
     /* Component: search body lock for mobile */
     new Material.Event.MatchMedia("(max-width: 959px)",

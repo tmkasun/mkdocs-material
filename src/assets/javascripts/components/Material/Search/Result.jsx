@@ -160,7 +160,8 @@ export default class Result {
   update(ev) {
 
     /* Initialize index, if this has not be done yet */
-    if (ev.type === "focus" && !this.index_) {
+    return
+    if (false && ev.type === "focus" && !this.index_) {
       document.querySelector(".md-search__icon").classList
         .add("md-search-loader")
       if (this.isInitializing) {

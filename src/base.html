@@ -182,6 +182,7 @@
 
     <!-- Custom front matter -->
     {% block extrahead %}{% endblock %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   </head>
 
   <!-- Text direction and color palette, if defined -->
@@ -386,4 +387,12 @@
       {% endfor %}
     {% endblock %}
   </body>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <script type="text/javascript"> docsearch({
+    apiKey: '31b0f8eb79778a2d238bc9600dc812af',
+    indexName: 'wso2',
+    inputSelector: '.md-search__input',
+    debug: false // Set debug to true if you want to inspect the dropdown
+    });
+  </script>
 </html>
